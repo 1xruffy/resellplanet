@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ace Movez</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://www.paypal.com/sdk/js?client-id=Abqeni29Ax1nQYeBcP8lEUsd__MoahXx8o65tgOoYHe3oJmq80vd7zJQ5cnrLPqdwUutGkpRfLZYPnHz&currency=USD"></script>
+
+<style>
+:root{
+  --blue:#3b82f6;
+  --blue-dark:#1e3a8a;
+  --blue-glow:#60a5fa;
+  --bg:#f8fbff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --radius:26px;
+}
+
+*{box-sizing:border-box;font-family:Inter,system-ui}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* BACKGROUND GLOWS */
+.glow{
+  position:fixed;
+  width:420px;
+  height:420px;
+  background:radial-gradient(circle,var(--blue-glow),transparent 70%);
+  filter:blur(80px);
+  opacity:.35;
+  z-index:-1;
+}
+.glow.one{top:-120px;left:-120px}
+.glow.two{bottom:-120px;right:-120px}
+
+/* HEADER */
+header{
+  padding:30px 60px;
+  display:flex;
+  justify-content:center;
+}
+header img{
+  height:46px;
+}
+
+/* HERO */
+.hero{
+  max-width:1200px;
+  margin:40px auto 80px;
+  padding:0 24px;
+  text-align:center;
+}
+.hero h1{
+  font-size:54px;
+  font-weight:900;
+  line-height:1.05;
+}
+.hero h1 span{
+  background:linear-gradient(90deg,var(--blue),var(--blue-dark));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.hero p{
+  margin:18px auto 34px;
+  max-width:620px;
+  font-size:17px;
+  color:var(--muted);
+}
+.hero button{
+  background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+  color:#fff;
+  border:none;
+  padding:16px 36px;
+  border-radius:999px;
+  font-size:15px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 20px 50px rgba(59,130,246,.4);
+  transition:.3s;
+}
+.hero button:hover{
+  transform:translateY(-3px);
+  box-shadow:0 30px 80px rgba(59,130,246,.6);
+}
+
+/* STORE */
+.store{
+  max-width:1400px;
+  margin:0 auto 120px;
+  padding:0 24px;
+}
+.store-title{
+  font-size:22px;
+  font-weight:800;
+  margin-bottom:30px;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:40px;
+}
+
+/* CARD */
+.card{
+  background:#fff;
+  border-radius:var(--radius);
+  padding:16px;
+  box-shadow:
+    0 10px 30px rgba(15,23,42,.05),
+    inset 0 0 0 1px #e5edff;
+  transition:.45s cubic-bezier(.2,.8,.2,1);
+}
+.card:hover{
+  transform:translateY(-14px);
+  box-shadow:
+    0 40px 90px rgba(59,130,246,.25),
+    inset 0 0 0 1px var(--blue);
+}
+
+/* IMAGE */
+.card-img{
+  position:relative;
+  border-radius:20px;
+  overflow:hidden;
+  background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+}
+.card-img img{
+  width:100%;
+  display:block;
+  transition:.6s ease;
+}
+.card:hover img{
+  transform:scale(1.12);
+  opacity:.9;
+}
+
+/* TAG */
+.tag{
+  position:absolute;
+  top:16px;
+  left:16px;
+  background:#fff;
+  color:var(--blue-dark);
+  font-size:11px;
+  padding:6px 12px;
+  border-radius:999px;
+  font-weight:800;
+}
+
+/* INFO */
+.info{
+  padding:20px 6px 6px;
+}
+.info h3{
+  margin:0 0 6px;
+  font-size:15px;
+  font-weight:800;
+}
+.price{
+  font-size:15px;
+  font-weight:800;
+  color:var(--blue-dark);
+}
+.price del{
+  color:#94a3b8;
+  margin-right:6px;
+  font-weight:600;
+}
+
+/* PAYPAL */
+.paypal{margin-top:14px}
+iframe{border-radius:999px!important}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:40px;
+  font-size:13px;
+  color:var(--muted);
+}
+</style>
+</head>
+<body>
+
+<div class="glow one"></div>
+<div class="glow two"></div>
+
+<header>
+  <img src="assets/logo.png">
+</header>
+
+<section class="hero">
+  <h1>Build Your <span>Reselling Empire</span></h1>
+  <p>Premium vendor access, instant delivery, and trusted payments.  
+  Everything you need to start winning.</p>
+  <button onclick="document.querySelector('.store').scrollIntoView({behavior:'smooth'})">
+    Explore Vendors
+  </button>
+</section>
+
+<section class="store">
+  <div class="store-title">Available Vendors</div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<footer>
+  © 2026 Ace Movez — Secure Payments via PayPal
+</footer>
+
+<script>
+const products=[
+ {name:"Fairpods Vendor",price:20,old:135,img:"assets/p1.png",tag:"BEST"},
+ {name:"Spyder Vendors",price:10,img:"assets/p2.png"},
+ {name:"Fairpod Maxes",price:10,img:"assets/p3.png"},
+ {name:"Cologne Vendors",price:10,img:"assets/p4.png"}
+];
+
+const grid=document.getElementById("grid");
+
+products.forEach((p,i)=>{
+ const el=document.createElement("div");
+ el.className="card";
+ el.innerHTML=`
+  <div class="card-img">
+    <img src="${p.img}">
+    ${p.tag?`<div class="tag">${p.tag}</div>`:""}
+  </div>
+  <div class="info">
+    <h3>${p.name}</h3>
+    <div class="price">
+      ${p.old?`<del>$${p.old}</del>`:""}
+      $${p.price}.00 USD
+    </div>
+    <div class="paypal" id="pp${i}"></div>
+  </div>`;
+ grid.appendChild(el);
+
+ paypal.Buttons({
+  style:{layout:"horizontal",color:"blue",shape:"pill"},
+  createOrder:(d,a)=>a.order.create({
+    purchase_units:[{amount:{value:p.price.toString()}}]
+  }),
+  onApprove:(d,a)=>a.order.capture().then(()=>alert("Payment successful"))
+ }).render(`#pp${i}`);
+});
+</script>
+
+</body>
+</html>

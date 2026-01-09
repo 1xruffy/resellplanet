@@ -5,57 +5,43 @@
 <title>Resell Planet</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<!-- PAYPAL (CREDIT + DEBIT ENABLED) -->
 <script src="https://www.paypal.com/sdk/js?client-id=Abqeni29Ax1nQYeBcP8lEUsd__MoahXx8o65tgOoYHe3oJmq80vd7zJQ5cnrLPqdwUutGkpRfLZYPnHz&currency=USD&enable-funding=card"></script>
 
 <style>
 :root{
+ --bg:#020617;
+ --card:#020617f0;
+ --border:#1e293b;
  --blue:#38bdf8;
  --blue2:#2563eb;
- --bg:#020617;
- --card:#020617ee;
- --border:#1e293b;
  --text:#e5e7eb;
  --muted:#94a3b8;
- --radius:28px;
+ --radius:18px;
 }
 
 *{box-sizing:border-box;font-family:Inter}
 
 body{
  margin:0;
- background:
- radial-gradient(circle at 10% 10%, #38bdf840, transparent 40%),
- radial-gradient(circle at 90% 80%, #2563eb50, transparent 45%),
- var(--bg);
+ background:linear-gradient(180deg,#020617,#020617 60%,#020617);
  color:var(--text);
- overflow-x:hidden;
-}
-
-/* FLOATING ENERGY */
-.energy{
- position:fixed;
- inset:-200px;
- background:
- radial-gradient(circle at 20% 30%, #38bdf820, transparent 40%),
- radial-gradient(circle at 80% 70%, #2563eb30, transparent 45%);
- filter:blur(140px);
- z-index:-1;
 }
 
 /* HEADER */
 header{
- padding:28px 64px;
+ padding:18px 36px;
  display:flex;
  justify-content:space-between;
  align-items:center;
+ border-bottom:1px solid var(--border);
 }
-header img{height:46px}
+header img{height:34px}
 nav span{
- margin-left:28px;
- font-weight:700;
+ margin-left:22px;
+ font-weight:600;
+ font-size:14px;
  color:var(--muted);
  cursor:pointer;
 }
@@ -63,15 +49,15 @@ nav span:hover{color:white}
 
 /* HERO */
 .hero{
- max-width:1200px;
- margin:110px auto 140px;
+ max-width:900px;
+ margin:70px auto 60px;
  text-align:center;
- padding:0 24px;
+ padding:0 20px;
 }
 .hero h1{
- font-size:72px;
- font-weight:900;
- line-height:1.05;
+ font-size:42px;
+ font-weight:800;
+ margin-bottom:14px;
 }
 .hero span{
  background:linear-gradient(90deg,var(--blue),var(--blue2));
@@ -79,143 +65,125 @@ nav span:hover{color:white}
  color:transparent;
 }
 .hero p{
- max-width:720px;
- margin:26px auto 48px;
- font-size:18px;
+ font-size:15px;
  color:var(--muted);
-}
-.hero button{
- padding:20px 56px;
- border:none;
- border-radius:999px;
- background:linear-gradient(135deg,var(--blue),var(--blue2));
- font-weight:900;
- color:white;
- cursor:pointer;
- transition:.4s;
- box-shadow:0 30px 120px #38bdf850;
-}
-.hero button:hover{
- transform:translateY(-6px) scale(1.05);
- box-shadow:0 60px 180px #38bdf880;
 }
 
 /* TABS */
 .tabs{
  display:flex;
  justify-content:center;
- gap:16px;
- margin-bottom:80px;
+ gap:10px;
+ margin-bottom:40px;
 }
 .tab{
- padding:16px 36px;
+ padding:10px 22px;
  border-radius:999px;
- background:#020617aa;
- border:1px solid var(--border);
- font-weight:800;
+ font-size:13px;
+ font-weight:700;
  color:var(--muted);
+ border:1px solid var(--border);
+ background:#020617;
  cursor:pointer;
- transition:.4s;
+ transition:.25s;
 }
 .tab.active{
  background:linear-gradient(135deg,var(--blue),var(--blue2));
  color:white;
- box-shadow:0 25px 90px #38bdf860;
+ border:none;
 }
 
 /* STORE */
 .store{
- max-width:1400px;
- margin:0 auto 180px;
- padding:0 28px;
+ max-width:1200px;
+ margin:0 auto 120px;
+ padding:0 24px;
 }
 .grid{
  display:grid;
- grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
- gap:56px;
+ grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+ gap:22px;
 }
 
-/* CARD */
+/* CARD (SMALL) */
 .card{
- background:linear-gradient(180deg,#020617f0,#020617aa);
- border-radius:var(--radius);
+ background:var(--card);
  border:1px solid var(--border);
- padding:18px;
- box-shadow:0 40px 120px rgba(0,0,0,.7);
- transform:translateY(60px);
+ border-radius:var(--radius);
+ padding:10px;
+ transition:.3s;
  opacity:0;
- transition:.6s cubic-bezier(.2,.8,.2,1);
+ transform:translateY(20px);
 }
 .card.show{
  opacity:1;
  transform:translateY(0);
 }
 .card:hover{
- transform:translateY(-18px) scale(1.03);
- box-shadow:0 80px 220px #38bdf860;
+ border-color:var(--blue);
 }
 
 /* IMAGE */
 .card-img{
- border-radius:22px;
+ border-radius:12px;
  overflow:hidden;
  position:relative;
 }
 .card-img img{
  width:100%;
- transition:.8s;
+ display:block;
 }
-.card:hover img{transform:scale(1.15)}
-
 .badge{
  position:absolute;
- top:16px;
- left:16px;
- padding:8px 16px;
- border-radius:999px;
- font-size:11px;
- font-weight:900;
+ top:8px;
+ left:8px;
+ padding:4px 10px;
+ font-size:10px;
+ font-weight:800;
  background:#020617;
  border:1px solid var(--blue);
  color:#7dd3fc;
+ border-radius:999px;
 }
 
 /* INFO */
 .info{
- padding:22px 8px 6px;
+ padding:10px 4px 4px;
 }
 .info h3{
- margin:0 0 10px;
- font-size:17px;
- font-weight:900;
+ margin:0 0 6px;
+ font-size:13px;
+ font-weight:700;
 }
 .price{
- font-size:17px;
- font-weight:900;
+ font-size:14px;
+ font-weight:800;
  color:#7dd3fc;
 }
 .price del{
- margin-right:8px;
  color:#64748b;
+ margin-right:6px;
+ font-size:12px;
 }
 
-/* PAYPAL */
+/* PAYPAL SMALL */
 .paypal{
- margin-top:22px;
+ margin-top:8px;
+ transform:scale(.85);
+ transform-origin:left;
 }
 
 /* FOOTER */
 footer{
  text-align:center;
- padding:60px;
- font-size:13px;
+ padding:40px;
+ font-size:12px;
  color:var(--muted);
+ border-top:1px solid var(--border);
 }
 </style>
 </head>
 <body>
-
-<div class="energy"></div>
 
 <header>
  <img src="assets/logo.png">
@@ -227,11 +195,8 @@ footer{
 </header>
 
 <section class="hero">
- <h1>Build Your <span>Resell Planet</span></h1>
- <p>Premium vendors, instant delivery, and secure card payments powered by PayPal.</p>
- <button onclick="document.querySelector('.tabs').scrollIntoView({behavior:'smooth'})">
-  Enter Store
- </button>
+ <h1>Welcome to <span>Resell Planet</span></h1>
+ <p>Compact. Clean. Secure card payments.</p>
 </section>
 
 <div class="tabs">
@@ -245,7 +210,7 @@ footer{
 </section>
 
 <footer>
- © 2026 Resell Planet · Pay with PayPal or Credit/Debit Card
+ © 2026 Resell Planet · PayPal & Credit/Debit Cards
 </footer>
 
 <script>
@@ -280,21 +245,19 @@ function load(tab){
    </div>
    <div class="info">
     <h3>${p.name}</h3>
-    <div class="price">${p.old?`<del>$${p.old}</del>`:""}$${p.price}.00</div>
+    <div class="price">${p.old?`<del>$${p.old}</del>`:""}$${p.price}</div>
     <div class="paypal" id="pp${i}"></div>
    </div>`;
   grid.appendChild(c);
-  setTimeout(()=>c.classList.add("show"),i*120);
+
+  setTimeout(()=>c.classList.add("show"),i*80);
 
   paypal.Buttons({
-   fundingSource: paypal.FUNDING.PAYPAL,
-   style:{layout:"horizontal",shape:"pill"},
+   style:{layout:"horizontal",height:32,shape:"pill"},
    createOrder:(d,a)=>a.order.create({
     purchase_units:[{amount:{value:p.price.toString()}}]
    }),
-   onApprove:(d,a)=>a.order.capture().then(()=>{
-    alert("Payment successful!");
-   })
+   onApprove:(d,a)=>a.order.capture().then(()=>alert("Payment successful"))
   }).render(`#pp${i}`);
  });
 }

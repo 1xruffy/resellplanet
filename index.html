@@ -6,267 +6,246 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<script src="https://www.paypal.com/sdk/js?client-id=Abqeni29Ax1nQYeBcP8lEUsd__MoahXx8o65tgOoYHe3oJmq80vd7zJQ5cnrLPqdwUutGkpRfLZYPnHz&currency=USD"></script>
+
+<!-- PAYPAL (CREDIT + DEBIT ENABLED) -->
+<script src="https://www.paypal.com/sdk/js?client-id=Abqeni29Ax1nQYeBcP8lEUsd__MoahXx8o65tgOoYHe3oJmq80vd7zJQ5cnrLPqdwUutGkpRfLZYPnHz&currency=USD&enable-funding=card"></script>
 
 <style>
 :root{
-  --blue-1:#0ea5e9;
-  --blue-2:#2563eb;
-  --blue-3:#1e3a8a;
-  --blue-glow:#38bdf8;
-  --bg:#020617;
-  --card:#020617cc;
-  --text:#e5e7eb;
-  --muted:#94a3b8;
-  --radius:28px;
+ --blue:#38bdf8;
+ --blue2:#2563eb;
+ --bg:#020617;
+ --card:#020617ee;
+ --border:#1e293b;
+ --text:#e5e7eb;
+ --muted:#94a3b8;
+ --radius:28px;
 }
 
-*{box-sizing:border-box;font-family:Inter,system-ui}
+*{box-sizing:border-box;font-family:Inter}
 
 body{
-  margin:0;
-  background:
-    radial-gradient(circle at 20% 10%, #0ea5e930, transparent 40%),
-    radial-gradient(circle at 80% 80%, #2563eb40, transparent 45%),
-    var(--bg);
-  color:var(--text);
-  overflow-x:hidden;
+ margin:0;
+ background:
+ radial-gradient(circle at 10% 10%, #38bdf840, transparent 40%),
+ radial-gradient(circle at 90% 80%, #2563eb50, transparent 45%),
+ var(--bg);
+ color:var(--text);
+ overflow-x:hidden;
 }
 
-/* FLOATING GLOWS */
-.glow{
-  position:fixed;
-  width:500px;
-  height:500px;
-  background:radial-gradient(circle,var(--blue-glow),transparent 65%);
-  filter:blur(120px);
-  opacity:.35;
-  z-index:-1;
+/* FLOATING ENERGY */
+.energy{
+ position:fixed;
+ inset:-200px;
+ background:
+ radial-gradient(circle at 20% 30%, #38bdf820, transparent 40%),
+ radial-gradient(circle at 80% 70%, #2563eb30, transparent 45%);
+ filter:blur(140px);
+ z-index:-1;
 }
-.glow.one{top:-150px;left:-150px}
-.glow.two{bottom:-150px;right:-150px}
 
 /* HEADER */
 header{
-  padding:26px 60px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+ padding:28px 64px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
 }
-header img{height:44px}
-nav{
-  display:flex;
-  gap:28px;
-}
+header img{height:46px}
 nav span{
-  font-weight:600;
-  color:var(--muted);
-  cursor:pointer;
-  position:relative;
+ margin-left:28px;
+ font-weight:700;
+ color:var(--muted);
+ cursor:pointer;
 }
-nav span.active,
-nav span:hover{color:#fff}
-nav span.active::after{
-  content:"";
-  position:absolute;
-  bottom:-8px;
-  left:0;
-  width:100%;
-  height:2px;
-  background:linear-gradient(90deg,var(--blue-1),var(--blue-2));
-}
+nav span:hover{color:white}
 
 /* HERO */
 .hero{
-  max-width:1200px;
-  margin:90px auto 120px;
-  padding:0 24px;
-  text-align:center;
+ max-width:1200px;
+ margin:110px auto 140px;
+ text-align:center;
+ padding:0 24px;
 }
 .hero h1{
-  font-size:64px;
-  font-weight:900;
-  line-height:1.05;
+ font-size:72px;
+ font-weight:900;
+ line-height:1.05;
 }
-.hero h1 span{
-  background:linear-gradient(90deg,var(--blue-1),var(--blue-2));
-  -webkit-background-clip:text;
-  color:transparent;
+.hero span{
+ background:linear-gradient(90deg,var(--blue),var(--blue2));
+ -webkit-background-clip:text;
+ color:transparent;
 }
 .hero p{
-  max-width:680px;
-  margin:22px auto 42px;
-  color:var(--muted);
-  font-size:18px;
+ max-width:720px;
+ margin:26px auto 48px;
+ font-size:18px;
+ color:var(--muted);
 }
 .hero button{
-  background:linear-gradient(135deg,var(--blue-1),var(--blue-2));
-  border:none;
-  padding:18px 46px;
-  border-radius:999px;
-  font-weight:800;
-  color:#fff;
-  cursor:pointer;
-  box-shadow:0 0 0 rgba(56,189,248,0);
-  transition:.4s;
+ padding:20px 56px;
+ border:none;
+ border-radius:999px;
+ background:linear-gradient(135deg,var(--blue),var(--blue2));
+ font-weight:900;
+ color:white;
+ cursor:pointer;
+ transition:.4s;
+ box-shadow:0 30px 120px #38bdf850;
 }
 .hero button:hover{
-  transform:translateY(-4px);
-  box-shadow:0 30px 90px rgba(56,189,248,.55);
+ transform:translateY(-6px) scale(1.05);
+ box-shadow:0 60px 180px #38bdf880;
 }
 
 /* TABS */
 .tabs{
-  display:flex;
-  justify-content:center;
-  gap:14px;
-  margin-bottom:60px;
+ display:flex;
+ justify-content:center;
+ gap:16px;
+ margin-bottom:80px;
 }
 .tab{
-  padding:14px 28px;
-  border-radius:999px;
-  font-weight:700;
-  color:var(--muted);
-  background:#020617aa;
-  border:1px solid #1e293b;
-  cursor:pointer;
-  transition:.35s;
+ padding:16px 36px;
+ border-radius:999px;
+ background:#020617aa;
+ border:1px solid var(--border);
+ font-weight:800;
+ color:var(--muted);
+ cursor:pointer;
+ transition:.4s;
 }
 .tab.active{
-  color:#fff;
-  background:linear-gradient(135deg,var(--blue-1),var(--blue-2));
-  box-shadow:0 20px 60px rgba(56,189,248,.45);
+ background:linear-gradient(135deg,var(--blue),var(--blue2));
+ color:white;
+ box-shadow:0 25px 90px #38bdf860;
 }
 
 /* STORE */
 .store{
-  max-width:1400px;
-  margin:0 auto 160px;
-  padding:0 24px;
+ max-width:1400px;
+ margin:0 auto 180px;
+ padding:0 28px;
 }
 .grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
-  gap:48px;
+ display:grid;
+ grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+ gap:56px;
 }
 
 /* CARD */
 .card{
-  background:linear-gradient(180deg,#020617dd,#020617aa);
-  border-radius:var(--radius);
-  padding:18px;
-  border:1px solid #1e293b;
-  box-shadow:0 30px 80px rgba(0,0,0,.6);
-  transition:.5s cubic-bezier(.2,.8,.2,1);
-  opacity:0;
-  transform:translateY(40px);
+ background:linear-gradient(180deg,#020617f0,#020617aa);
+ border-radius:var(--radius);
+ border:1px solid var(--border);
+ padding:18px;
+ box-shadow:0 40px 120px rgba(0,0,0,.7);
+ transform:translateY(60px);
+ opacity:0;
+ transition:.6s cubic-bezier(.2,.8,.2,1);
 }
 .card.show{
-  opacity:1;
-  transform:translateY(0);
+ opacity:1;
+ transform:translateY(0);
 }
 .card:hover{
-  transform:translateY(-16px) scale(1.02);
-  box-shadow:0 50px 140px rgba(56,189,248,.35);
+ transform:translateY(-18px) scale(1.03);
+ box-shadow:0 80px 220px #38bdf860;
 }
 
 /* IMAGE */
 .card-img{
-  border-radius:22px;
-  overflow:hidden;
-  position:relative;
+ border-radius:22px;
+ overflow:hidden;
+ position:relative;
 }
 .card-img img{
-  width:100%;
-  display:block;
-  transition:.7s;
+ width:100%;
+ transition:.8s;
 }
-.card:hover img{
-  transform:scale(1.15);
-}
+.card:hover img{transform:scale(1.15)}
+
 .badge{
-  position:absolute;
-  top:16px;
-  left:16px;
-  padding:6px 14px;
-  background:#020617;
-  border:1px solid var(--blue-1);
-  color:#7dd3fc;
-  font-size:11px;
-  font-weight:800;
-  border-radius:999px;
+ position:absolute;
+ top:16px;
+ left:16px;
+ padding:8px 16px;
+ border-radius:999px;
+ font-size:11px;
+ font-weight:900;
+ background:#020617;
+ border:1px solid var(--blue);
+ color:#7dd3fc;
 }
 
 /* INFO */
 .info{
-  padding:22px 6px 6px;
+ padding:22px 8px 6px;
 }
 .info h3{
-  margin:0 0 8px;
-  font-size:16px;
-  font-weight:800;
+ margin:0 0 10px;
+ font-size:17px;
+ font-weight:900;
 }
 .price{
-  font-size:16px;
-  font-weight:900;
-  color:#7dd3fc;
+ font-size:17px;
+ font-weight:900;
+ color:#7dd3fc;
 }
 .price del{
-  color:#64748b;
-  margin-right:6px;
+ margin-right:8px;
+ color:#64748b;
 }
 
 /* PAYPAL */
 .paypal{
-  margin-top:18px;
-  opacity:.9;
+ margin-top:22px;
 }
-iframe{border-radius:999px!important}
 
 /* FOOTER */
 footer{
-  text-align:center;
-  padding:50px;
-  color:var(--muted);
-  font-size:13px;
+ text-align:center;
+ padding:60px;
+ font-size:13px;
+ color:var(--muted);
 }
 </style>
 </head>
 <body>
 
-<div class="glow one"></div>
-<div class="glow two"></div>
+<div class="energy"></div>
 
 <header>
-  <img src="assets/logo.png">
-  <nav>
-    <span class="active">Store</span>
-    <span>Discord</span>
-    <span>Support</span>
-  </nav>
+ <img src="assets/logo.png">
+ <nav>
+  <span>Store</span>
+  <span>Discord</span>
+  <span>Support</span>
+ </nav>
 </header>
 
 <section class="hero">
-  <h1>Build Your <span>Resell Planet</span></h1>
-  <p>Elite vendors, instant delivery, and secure payments.  
-  This is where real resellers start.</p>
-  <button onclick="document.querySelector('.tabs').scrollIntoView({behavior:'smooth'})">
-    Enter Store
-  </button>
+ <h1>Build Your <span>Resell Planet</span></h1>
+ <p>Premium vendors, instant delivery, and secure card payments powered by PayPal.</p>
+ <button onclick="document.querySelector('.tabs').scrollIntoView({behavior:'smooth'})">
+  Enter Store
+ </button>
 </section>
 
 <div class="tabs">
-  <div class="tab active" data-tab="vendors">Vendors</div>
-  <div class="tab" data-tab="bundles">Bundles</div>
-  <div class="tab" data-tab="courses">Courses</div>
+ <div class="tab active" data-tab="vendors">Vendors</div>
+ <div class="tab" data-tab="bundles">Bundles</div>
+ <div class="tab" data-tab="courses">Courses</div>
 </div>
 
 <section class="store">
-  <div class="grid" id="grid"></div>
+ <div class="grid" id="grid"></div>
 </section>
 
 <footer>
-  © 2026 Resell Planet — Payments secured by PayPal
+ © 2026 Resell Planet · Pay with PayPal or Credit/Debit Card
 </footer>
 
 <script>
@@ -301,21 +280,21 @@ function load(tab){
    </div>
    <div class="info">
     <h3>${p.name}</h3>
-    <div class="price">
-     ${p.old?`<del>$${p.old}</del>`:""}$${p.price}.00 USD
-    </div>
+    <div class="price">${p.old?`<del>$${p.old}</del>`:""}$${p.price}.00</div>
     <div class="paypal" id="pp${i}"></div>
    </div>`;
   grid.appendChild(c);
-
   setTimeout(()=>c.classList.add("show"),i*120);
 
   paypal.Buttons({
+   fundingSource: paypal.FUNDING.PAYPAL,
    style:{layout:"horizontal",shape:"pill"},
    createOrder:(d,a)=>a.order.create({
     purchase_units:[{amount:{value:p.price.toString()}}]
    }),
-   onApprove:(d,a)=>a.order.capture().then(()=>alert("Payment successful"))
+   onApprove:(d,a)=>a.order.capture().then(()=>{
+    alert("Payment successful!");
+   })
   }).render(`#pp${i}`);
  });
 }

@@ -7,170 +7,202 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+<!-- PAYPAL (CARDS ENABLED) -->
 <script src="https://www.paypal.com/sdk/js?client-id=Abqeni29Ax1nQYeBcP8lEUsd__MoahXx8o65tgOoYHe3oJmq80vd7zJQ5cnrLPqdwUutGkpRfLZYPnHz&currency=USD&enable-funding=card"></script>
 
 <style>
 :root{
- --bg:#020617;
- --card:#020617f0;
+ --bg:#05070e;
+ --panel:#0b1020;
+ --card:#0f172a;
  --border:#1e293b;
- --blue:#38bdf8;
- --blue2:#2563eb;
+ --blue:#3b82f6;
+ --blue2:#60a5fa;
  --text:#e5e7eb;
  --muted:#94a3b8;
- --radius:18px;
+ --radius:14px;
 }
 
 *{box-sizing:border-box;font-family:Inter}
 
 body{
  margin:0;
- background:linear-gradient(180deg,#020617,#020617 60%,#020617);
+ background:radial-gradient(circle at 30% 10%, #2563eb30, transparent 40%), var(--bg);
  color:var(--text);
 }
 
-/* HEADER */
-header{
- padding:18px 36px;
+/* TOP BAR */
+.top{
+ padding:18px 32px;
  display:flex;
- justify-content:space-between;
  align-items:center;
+ justify-content:space-between;
  border-bottom:1px solid var(--border);
+ background:rgba(5,7,14,.8);
+ backdrop-filter:blur(10px);
+ position:sticky;
+ top:0;
+ z-index:10;
 }
-header img{height:34px}
-nav span{
- margin-left:22px;
+.top img{height:32px}
+.top nav span{
+ margin-left:24px;
+ font-size:13px;
  font-weight:600;
- font-size:14px;
  color:var(--muted);
  cursor:pointer;
 }
-nav span:hover{color:white}
+.top nav span:hover{color:white}
 
 /* HERO */
 .hero{
- max-width:900px;
- margin:70px auto 60px;
- text-align:center;
- padding:0 20px;
+ max-width:1100px;
+ margin:60px auto 40px;
+ padding:0 24px;
+ display:grid;
+ grid-template-columns:1.2fr .8fr;
+ gap:40px;
 }
 .hero h1{
- font-size:42px;
+ font-size:46px;
  font-weight:800;
- margin-bottom:14px;
+ line-height:1.1;
 }
-.hero span{
+.hero h1 span{
  background:linear-gradient(90deg,var(--blue),var(--blue2));
  -webkit-background-clip:text;
  color:transparent;
 }
 .hero p{
+ margin-top:14px;
  font-size:15px;
  color:var(--muted);
 }
-
-/* TABS */
-.tabs{
- display:flex;
- justify-content:center;
- gap:10px;
- margin-bottom:40px;
+.stats{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:16px;
+ margin-top:26px;
 }
-.tab{
- padding:10px 22px;
- border-radius:999px;
- font-size:13px;
- font-weight:700;
- color:var(--muted);
+.stat{
+ background:var(--panel);
  border:1px solid var(--border);
- background:#020617;
- cursor:pointer;
- transition:.25s;
+ border-radius:var(--radius);
+ padding:14px;
+ text-align:center;
 }
-.tab.active{
- background:linear-gradient(135deg,var(--blue),var(--blue2));
- color:white;
- border:none;
-}
+.stat b{font-size:18px}
 
 /* STORE */
 .store{
  max-width:1200px;
- margin:0 auto 120px;
+ margin:40px auto 120px;
  padding:0 24px;
 }
-.grid{
- display:grid;
- grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
- gap:22px;
+.store-head{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:20px;
+}
+.tabs{
+ display:flex;
+ gap:10px;
+}
+.tab{
+ padding:8px 16px;
+ font-size:12px;
+ font-weight:700;
+ border-radius:999px;
+ border:1px solid var(--border);
+ color:var(--muted);
+ cursor:pointer;
+}
+.tab.active{
+ background:var(--blue);
+ color:white;
+ border:none;
 }
 
-/* CARD (SMALL) */
-.card{
+/* GRID */
+.grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+ gap:18px;
+}
+
+/* PRODUCT */
+.product{
  background:var(--card);
  border:1px solid var(--border);
  border-radius:var(--radius);
- padding:10px;
- transition:.3s;
- opacity:0;
- transform:translateY(20px);
+ padding:12px;
+ cursor:pointer;
+ transition:.25s;
 }
-.card.show{
- opacity:1;
- transform:translateY(0);
-}
-.card:hover{
+.product:hover{
+ transform:translateY(-4px);
  border-color:var(--blue);
 }
-
-/* IMAGE */
-.card-img{
- border-radius:12px;
- overflow:hidden;
- position:relative;
-}
-.card-img img{
+.product img{
  width:100%;
- display:block;
+ border-radius:10px;
+ margin-bottom:10px;
 }
-.badge{
- position:absolute;
- top:8px;
- left:8px;
- padding:4px 10px;
- font-size:10px;
- font-weight:800;
- background:#020617;
- border:1px solid var(--blue);
- color:#7dd3fc;
- border-radius:999px;
-}
-
-/* INFO */
-.info{
- padding:10px 4px 4px;
-}
-.info h3{
- margin:0 0 6px;
- font-size:13px;
+.product h3{
+ margin:0;
+ font-size:14px;
  font-weight:700;
 }
-.price{
- font-size:14px;
- font-weight:800;
- color:#7dd3fc;
+.product p{
+ margin:6px 0 0;
+ font-size:13px;
+ color:var(--muted);
 }
-.price del{
- color:#64748b;
- margin-right:6px;
- font-size:12px;
+.price{
+ margin-top:8px;
+ font-weight:800;
+ color:#93c5fd;
 }
 
-/* PAYPAL SMALL */
-.paypal{
- margin-top:8px;
- transform:scale(.85);
- transform-origin:left;
+/* CHECKOUT PANEL */
+.checkout{
+ position:fixed;
+ top:0;
+ right:-420px;
+ width:420px;
+ height:100%;
+ background:var(--panel);
+ border-left:1px solid var(--border);
+ padding:22px;
+ transition:.35s;
+ z-index:20;
+}
+.checkout.active{right:0}
+.checkout h2{
+ margin:0 0 10px;
+}
+.close{
+ position:absolute;
+ top:18px;
+ right:18px;
+ cursor:pointer;
+ color:var(--muted);
+}
+.paypal{margin-top:20px}
+
+/* OVERLAY */
+.overlay{
+ position:fixed;
+ inset:0;
+ background:#000a;
+ opacity:0;
+ pointer-events:none;
+ transition:.3s;
+}
+.overlay.active{
+ opacity:1;
+ pointer-events:auto;
 }
 
 /* FOOTER */
@@ -185,29 +217,48 @@ footer{
 </head>
 <body>
 
-<header>
+<div class="top">
  <img src="assets/logo.png">
  <nav>
   <span>Store</span>
   <span>Discord</span>
   <span>Support</span>
  </nav>
-</header>
-
-<section class="hero">
- <h1>Welcome to <span>Resell Planet</span></h1>
- <p>Compact. Clean. Secure card payments.</p>
-</section>
-
-<div class="tabs">
- <div class="tab active" data-tab="vendors">Vendors</div>
- <div class="tab" data-tab="bundles">Bundles</div>
- <div class="tab" data-tab="courses">Courses</div>
 </div>
 
+<section class="hero">
+ <div>
+  <h1>Sell smarter on <span>Resell Planet</span></h1>
+  <p>Instant access to vendors, bundles, and resell education. Secure card checkout powered by PayPal.</p>
+  <div class="stats">
+   <div class="stat"><b>10K+</b><br>Sales</div>
+   <div class="stat"><b>24/7</b><br>Delivery</div>
+   <div class="stat"><b>100%</b><br>Secure</div>
+  </div>
+ </div>
+</section>
+
 <section class="store">
+ <div class="store-head">
+  <h3>Marketplace</h3>
+  <div class="tabs">
+   <div class="tab active" data-tab="vendors">Vendors</div>
+   <div class="tab" data-tab="bundles">Bundles</div>
+   <div class="tab" data-tab="courses">Courses</div>
+  </div>
+ </div>
  <div class="grid" id="grid"></div>
 </section>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="checkout" id="checkout">
+ <span class="close" onclick="closeCheckout()">✕</span>
+ <h2 id="cName"></h2>
+ <p id="cDesc"></p>
+ <div class="price" id="cPrice"></div>
+ <div class="paypal" id="paypal"></div>
+</div>
 
 <footer>
  © 2026 Resell Planet · PayPal & Credit/Debit Cards
@@ -216,50 +267,63 @@ footer{
 <script>
 const data={
  vendors:[
-  {name:"Fairpods Vendor",price:20,old:135,img:"assets/p1.png",badge:"BEST"},
+  {name:"Fairpods Vendor",price:20,img:"assets/p1.png"},
   {name:"Spyder Vendor",price:10,img:"assets/p2.png"},
-  {name:"Fairpod Maxes",price:10,img:"assets/p3.png"},
-  {name:"Cologne Vendor",price:10,img:"assets/p4.png"}
+  {name:"Cologne Vendor",price:10,img:"assets/p3.png"}
  ],
  bundles:[
-  {name:"Beginner Resell Bundle",price:35,old:80,img:"assets/p1.png"},
-  {name:"Advanced Vendor Pack",price:60,img:"assets/p2.png"}
+  {name:"Beginner Bundle",price:35,img:"assets/p1.png"},
+  {name:"Advanced Pack",price:60,img:"assets/p2.png"}
  ],
  courses:[
   {name:"Reselling From £0",price:15,img:"assets/p3.png"},
-  {name:"Scale To £5K/Month",price:25,img:"assets/p4.png"}
+  {name:"Scale To £5K",price:25,img:"assets/p1.png"}
  ]
 };
 
 const grid=document.getElementById("grid");
+const checkout=document.getElementById("checkout");
+const overlay=document.getElementById("overlay");
 
 function load(tab){
  grid.innerHTML="";
- data[tab].forEach((p,i)=>{
-  const c=document.createElement("div");
-  c.className="card";
-  c.innerHTML=`
-   <div class="card-img">
-    <img src="${p.img}">
-    ${p.badge?`<div class="badge">${p.badge}</div>`:""}
-   </div>
-   <div class="info">
-    <h3>${p.name}</h3>
-    <div class="price">${p.old?`<del>$${p.old}</del>`:""}$${p.price}</div>
-    <div class="paypal" id="pp${i}"></div>
-   </div>`;
-  grid.appendChild(c);
-
-  setTimeout(()=>c.classList.add("show"),i*80);
-
-  paypal.Buttons({
-   style:{layout:"horizontal",height:32,shape:"pill"},
-   createOrder:(d,a)=>a.order.create({
-    purchase_units:[{amount:{value:p.price.toString()}}]
-   }),
-   onApprove:(d,a)=>a.order.capture().then(()=>alert("Payment successful"))
-  }).render(`#pp${i}`);
+ data[tab].forEach(p=>{
+  const d=document.createElement("div");
+  d.className="product";
+  d.innerHTML=`
+   <img src="${p.img}">
+   <h3>${p.name}</h3>
+   <p>Instant delivery</p>
+   <div class="price">$${p.price}</div>
+  `;
+  d.onclick=()=>openCheckout(p);
+  grid.appendChild(d);
  });
+}
+
+function openCheckout(p){
+ checkout.classList.add("active");
+ overlay.classList.add("active");
+ document.getElementById("cName").innerText=p.name;
+ document.getElementById("cDesc").innerText="Secure checkout · Instant access";
+ document.getElementById("cPrice").innerText="$"+p.price;
+
+ document.getElementById("paypal").innerHTML="";
+ paypal.Buttons({
+  style:{layout:"vertical",shape:"pill"},
+  createOrder:(d,a)=>a.order.create({
+   purchase_units:[{amount:{value:p.price.toString()}}]
+  }),
+  onApprove:(d,a)=>a.order.capture().then(()=>{
+   alert("Payment successful!");
+   closeCheckout();
+  })
+ }).render("#paypal");
+}
+
+function closeCheckout(){
+ checkout.classList.remove("active");
+ overlay.classList.remove("active");
 }
 
 load("vendors");
